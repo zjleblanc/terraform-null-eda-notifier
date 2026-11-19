@@ -2,6 +2,11 @@
 
 All notable changes to this module are documented in this file.
 
+## 2026-11-19 — Add gitleaks pre-commit hook
+
+### Added
+- `gitleaks` hook in `.pre-commit-config.yaml` to block commits that introduce secrets
+
 ## 2026-11-19 — Add changelog and pre-commit hooks
 
 ### Added

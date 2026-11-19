@@ -103,7 +103,7 @@ pre-commit install
 pre-commit run --all-files
 ```
 
-Hooks run `terraform fmt`, `terraform validate`, TFLint, and terraform-docs (README inject).
+Hooks run `terraform fmt`, `terraform validate`, TFLint, terraform-docs (README inject), and gitleaks.
 
 ## Publish to the private registry
 

@@ -113,4 +113,4 @@ Hooks run `terraform fmt`, `terraform validate`, TFLint, terraform-docs (README 
 
 ## License
 
-Use and redistribute as needed within your organization.
+[MIT](LICENSE)

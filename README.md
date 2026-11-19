@@ -82,6 +82,29 @@ app.terraform.io/<org>/eda-notifier/zjleblanc
 
 The design guide’s `.../eda-notifier/null` address requires a Git remote named `terraform-null-eda-notifier` before publish.
 
+## Token payload
+
+```json
+{
+  "jti": "1192426d-b525-4fde-9d42-f238be437bbd",
+  "iss": "https://app.terraform.io",
+  "aud": "my-example-audience",
+  "iat": 1650486122,
+  "nbf": 1650486117,
+  "exp": 1650486422,
+  "sub": "organization:my-org:project:Default Project:workspace:my-workspace:run_phase:apply",
+  "terraform_organization_id": "org-GRNbCjYNpBB6NEH9",
+  "terraform_organization_name": "my-org",
+  "terraform_project_id": "prj-vegSA59s1XPwMr2t",
+  "terraform_project_name": "Default Project",
+  "terraform_workspace_id": "ws-mbsd5E3Ktt5Rg2Xm",
+  "terraform_workspace_name": "my-workspace",
+  "terraform_full_workspace": "organization:my-org:project:Default Project:workspace:my-workspace",
+  "terraform_run_id": "run-X3n1AUXNGWbfECsJ",
+  "terraform_run_phase": "apply"
+}
+```
+
 ## Event payload
 
 ```json

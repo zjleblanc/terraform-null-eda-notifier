@@ -29,14 +29,15 @@ resource "terraform_data" "eda_trigger" {
 # Write-only headers/body keep the OIDC token out of plan and state (actions cannot
 # accept ephemeral values; see hashicorp/terraform#38390).
 resource "terracurl_request" "notify_eda" {
-  name           = "eda-notify"
-  method         = "POST"
-  url            = var.eda_event_stream_url
-  response_codes = ["200", "202"]
-  max_retry      = 3
-  retry_interval = 2
-  skip_read      = true
-  skip_destroy   = true
+  name            = "eda-notify"
+  method          = "POST"
+  url             = var.eda_event_stream_url
+  response_codes  = ["200", "202"]
+  max_retry       = 3
+  retry_interval  = 2
+  skip_read       = true
+  skip_destroy    = true
+  skip_tls_verify = var.skip_tls_verify
 
   headers_wo = {
     Authorization = "Bearer ${trimspace(ephemeral.local_command.oidc_token.stdout)}"

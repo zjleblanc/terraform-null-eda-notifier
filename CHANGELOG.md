@@ -2,6 +2,14 @@
 
 All notable changes to this module are documented in this file.
 
+## 2026-11-19 — Allow HTTP Event Stream URLs and optional TLS skip
+
+### Added
+- `skip_tls_verify` input (default `true`) mapped to `terracurl_request.skip_tls_verify`
+
+### Changed
+- `eda_event_stream_url` validation now accepts `http://` and `https://`
+
 ## 2026-11-19 — Add gitleaks pre-commit hook
 
 ### Added

@@ -25,6 +25,7 @@ Reusable Terraform module that notifies an Ansible Automation Platform (AAP) Eve
 | <a name="input_eda_event_stream_url"></a> [eda\_event\_stream\_url](#input\_eda\_event\_stream\_url) | AAP Event Stream POST URL. Automatically populated when TF\_VAR\_eda\_event\_stream\_url is set in an HCP Variable Set. | `string` | n/a | yes |
 | <a name="input_event_type"></a> [event\_type](#input\_event\_type) | Routing key matched by EDA rules to select the target Ansible Job Template. | `string` | `"terraform.apply.completed"` | no |
 | <a name="input_outputs"></a> [outputs](#input\_outputs) | Map of Terraform outputs to include in the EDA event payload. Do not pass secrets—values are stored in terraform\_data state. | `any` | `{}` | no |
+| <a name="input_skip_tls_verify"></a> [skip\_tls\_verify](#input\_skip\_tls\_verify) | When true, disables TLS certificate verification for the Event Stream POST (useful for private AAP with internal CAs). | `bool` | `true` | no |
 | <a name="input_trigger_on_every_apply"></a> [trigger\_on\_every\_apply](#input\_trigger\_on\_every\_apply) | When false, triggers EDA only when values in `outputs` change. Set to true to fire on every apply. | `bool` | `false` | no |
 
 ## Outputs

@@ -3,9 +3,15 @@ variable "eda_event_stream_url" {
   description = "AAP Event Stream POST URL. Automatically populated when TF_VAR_eda_event_stream_url is set in an HCP Variable Set."
 
   validation {
-    condition     = startswith(var.eda_event_stream_url, "https://")
-    error_message = "eda_event_stream_url must be an https:// URL."
+    condition     = startswith(var.eda_event_stream_url, "https://") || startswith(var.eda_event_stream_url, "http://")
+    error_message = "eda_event_stream_url must be an http:// or https:// URL."
   }
+}
+
+variable "skip_tls_verify" {
+  type        = bool
+  default     = true
+  description = "When true, disables TLS certificate verification for the Event Stream POST (useful for private AAP with internal CAs)."
 }
 
 variable "event_type" {

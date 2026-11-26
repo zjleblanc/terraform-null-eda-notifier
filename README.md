@@ -1,4 +1,4 @@
-# terraform-zjleblanc-eda-notifier
+# terraform-null-eda-notifier
 
 Reusable Terraform module that notifies an Ansible Automation Platform (AAP) Event-Driven Ansible (EDA) event stream after a successful apply. Workspaces pass an `event_type` and non-sensitive outputs; the module reads the HCP Terraform workload-identity OIDC token and run metadata at apply time and POSTs a JSON event to the Event Stream URL.
 
@@ -56,7 +56,7 @@ A replacement create POSTs again with a fresh token. Destroy skips the HTTP call
 
 ```hcl
 module "eda_notify" {
-  source  = "app.terraform.io/my-org/eda-notifier/zjleblanc"
+  source  = "zjleblanc/eda-notifier/null"
   version = "~> 1.0"
 
   event_type = "app.infrastructure.deployed"
@@ -74,13 +74,13 @@ Because `outputs` references provisioned attributes, Terraform waits for those r
 
 ### Registry naming
 
-HCP Terraform publishes modules from repositories named `terraform-<PROVIDER>-<NAME>`. This repo name yields:
+GitHub repositories named `terraform-<PROVIDER>-<NAME>` map to registry addresses. This repo yields:
 
 ```text
-app.terraform.io/<org>/eda-notifier/zjleblanc
+registry.terraform.io/zjleblanc/eda-notifier/null
 ```
 
-The design guide’s `.../eda-notifier/null` address requires a Git remote named `terraform-null-eda-notifier` before publish.
+The same repository naming also works when publishing to an HCP Terraform private registry (`app.terraform.io/<org>/eda-notifier/null`).
 
 ## Token payload
 
@@ -129,10 +129,14 @@ pre-commit run --all-files
 
 Hooks run `terraform fmt`, `terraform validate`, TFLint, terraform-docs (README inject), and gitleaks.
 
-## Publish to the private registry
+## Publish to the public registry
 
-1. Tag a release: `git tag v1.0.0 && git push --tags`
-2. In HCP Terraform: **Registry → Publish → Module**, connect this repository, and publish
+1. Ensure the GitHub repository is public and tagged: `git tag v1.0.0 && git push --tags`
+2. Sign in at [registry.terraform.io](https://registry.terraform.io) with GitHub
+3. **Publish** → select `terraform-null-eda-notifier` → publish
+4. Confirm the module at `https://registry.terraform.io/modules/zjleblanc/eda-notifier/null/latest`
+
+Later versions appear automatically when you push new `vX.Y.Z` tags. The same repo can also be published to an HCP Terraform private registry via **Registry → Publish → Module**.
 
 ## License
 

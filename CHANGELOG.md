@@ -2,6 +2,16 @@
 
 All notable changes to this module are documented in this file.
 
+## 2026-11-25 — Prepare public registry publish as null provider
+
+### Changed
+- Renamed repository to `terraform-null-eda-notifier` (module address `zjleblanc/eda-notifier/null`)
+- README usage and publish docs target the public Terraform Registry
+
+### Added
+- Empty `outputs.tf` for standard module layout
+- `examples/basic` usage example for registry consumers
+
 ## 2026-11-19 — Allow HTTP Event Stream URLs and optional TLS skip
 
 ### Added
